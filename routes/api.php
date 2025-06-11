@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\Master\WargaController;
 use App\Http\Controllers\Auth\Authentication;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -23,3 +24,5 @@ Route::middleware('jwt')->group(function () {
     Route::post('/logout', [Authentication::class, 'logout']);
     Route::put('/user', [Authentication::class, 'updateUser']);
 });
+
+Route::post('/warga', [WargaController::class, 'datatables']);

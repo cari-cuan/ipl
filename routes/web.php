@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Page\Master\PageWargaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Page\Auth\Login;
+use App\Http\Controllers\Page\Dashboard\Dashboard;
 use GuzzleHttp\Psr7\Request;
 
 // Route::get('/', function () {
@@ -10,3 +12,7 @@ use GuzzleHttp\Psr7\Request;
 
 // Route::middleware([CheckAccess::class])->group(function () {
 Route::get('/', [Login::class, 'login']);
+Route::get('/dashboard', [Dashboard::class, 'dashboard']);
+
+Route::get('/warga', [PageWargaController::class, 'index'])->name('warga');
+// });

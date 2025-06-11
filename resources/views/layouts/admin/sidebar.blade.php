@@ -65,8 +65,8 @@
                   </a>
               </div>
               <div class="me-0">
-                  <a href="general-settings.html" class="btn btn-sm btn-icon bg-light">
-                      <i class="ti ti-settings"></i>
+                  <a href="#" onclick="logout()" class="btn btn-sm btn-icon bg-light">
+                      <i class="ti ti-logout"></i>
                   </a>
               </div>
           </div>
@@ -95,6 +95,12 @@
                                       Perumahan</span></a></li>
                           <li><a href="billers.html"><i class="ti ti-user-up fs-16 me-2"></i><span>Data
                                       Cluster</span></a>
+                          </li>
+                          <li>
+                              <a href="{{ route('warga') }}">
+                                  <i class="ti ti-user-up fs-16 me-2"></i>
+                                  <span>Data Warga</span>
+                              </a>
                           </li>
 
                       </ul>

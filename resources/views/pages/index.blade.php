@@ -5,7 +5,7 @@
 
     @include('layouts.admin.meta')
     @include('layouts.admin.head')
-
+    @yield('customcss')
 </head>
 
 <body>
@@ -45,6 +45,7 @@
 
 
     @include('layouts.admin.foot')
+    @yield('customjs')
 
 
 </body>

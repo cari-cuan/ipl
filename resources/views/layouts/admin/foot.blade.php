@@ -28,6 +28,14 @@
   <!-- Color Picker JS -->
   <script src="{{ asset('assets/plugins/simonwep/pickr/pickr.es5.min.js') }}" type="text/javascript"></script>
 
+  <!-- Datatable JS -->
+  <script src="{{ asset('assets/js/jquery.dataTables.min.js') }}" type="text/javascript"></script>
+  <script src="{{ asset('assets/js/dataTables.bootstrap5.min.js') }}" type="text/javascript"></script>
+
+
   <!-- Custom JS -->
   <script src="{{ asset('assets/js/theme-colorpicker.js') }}" type="text/javascript"></script>
   <script src="{{ asset('assets/js/script.js') }}" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+  <script src="{{ asset('assets/custom/ui/toaster/toaster.config.js') }}"></script>
+  <script src="{{ asset('assets/custom/core/apps.js') }}"></script>
