@@ -91,7 +91,7 @@
                   <li class="submenu-open">
                       <h6 class="submenu-hdr">Data Master</h6>
                       <ul>
-                          <li><a href="customers.html"><i class="ti ti-home fs-16 me-2"></i><span>Data
+                          <li><a href="{{ route('perumahan') }}"><i class="ti ti-home fs-16 me-2"></i><span>Data
                                       Perumahan</span></a></li>
                           <li><a href="billers.html"><i class="ti ti-user-up fs-16 me-2"></i><span>Data
                                       Cluster</span></a>

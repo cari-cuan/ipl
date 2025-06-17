@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\Master\WargaController;
+use App\Http\Controllers\Api\Master\PerumahanController;
 use App\Http\Controllers\Auth\Authentication;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -26,3 +27,4 @@ Route::middleware('jwt')->group(function () {
 });
 
 Route::post('/warga', [WargaController::class, 'datatables']);
+Route::post('/perumahan', [PerumahanController::class, 'datatables']);

@@ -1,0 +1,74 @@
+@extends('pages.index')
+@section('title', 'Dashboard')
+
+@section('content')
+    <div class="page-header">
+        <div class="add-item d-flex">
+            <div class="page-title">
+                <h4 class="fw-bold">Perumahan</h4>
+                <h6>Manage perumahan</h6>
+            </div>
+        </div>
+        <ul class="table-top-head">
+            <li>
+                <a data-bs-toggle="tooltip" data-bs-placement="top" title="Pdf"><img src="assets/img/icons/pdf.svg"
+                        alt="img"></a>
+            </li>
+            <li>
+                <a data-bs-toggle="tooltip" data-bs-placement="top" title="Excel"><img src="assets/img/icons/excel.svg"
+                        alt="img"></a>
+            </li>
+            <li>
+                <a data-bs-toggle="tooltip" data-bs-placement="top" title="Refresh"><i class="ti ti-refresh"></i></a>
+            </li>
+            <li>
+                <a data-bs-toggle="tooltip" data-bs-placement="top" title="Collapse" id="collapse-header"><i
+                        class="ti ti-chevron-up"></i></a>
+            </li>
+        </ul>
+        <div class="page-btn">
+            <a href="add-product.html" class="btn btn-primary"><i class="ti ti-circle-plus me-1"></i>Add New</a>
+        </div>
+        {{-- <div class="page-btn import">
+            <a href="#" class="btn btn-secondary color" data-bs-toggle="modal" data-bs-target="#view-notes"><i
+                    data-feather="download" class="me-1"></i>Import Product</a>
+        </div> --}}
+    </div>
+
+    <!-- /product list -->
+    <div class="card">
+        <div class="card-body p-0">
+            {{-- <div class="table-responsive">
+                <table class="table" id="warga"></table>
+            </div> --}}
+            <div class="table-responsive">
+                <table class="table" id="perumahan-table">
+                    <thead class="thead-light">
+                        <tr>
+                            {{-- <th class="no-sort">
+                                <label class="checkboxs">
+                                    <input type="checkbox" id="select-all">
+                                    <span class="checkmarks"></span>
+                                </label>
+                            </th> --}}
+                            <th>SKU </th>
+                            <th>Product Name</th>
+                            <th>Category</th>
+                            <th>Brand</th>
+                            <th>Price</th>
+                            <th>Unit</th>
+                            <th>Qty</th>
+                            <th>Created By</th>
+                            <th>Created By</th>
+                            {{-- <th class="no-sort"></th> --}}
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+@endsection
+
+@section('customjs')
+    <script src="{{ URL::to('assets/custom/pages/perumahan/perumahan.js') }}?cache={{ ENV('APP_VERSION') }}"></script>
+@endsection

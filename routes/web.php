@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Page\Master\PageWargaController;
+use App\Http\Controllers\Page\Master\PerumahanController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Page\Auth\Login;
 use App\Http\Controllers\Page\Dashboard\Dashboard;
@@ -15,4 +16,5 @@ Route::get('/', [Login::class, 'login']);
 Route::get('/dashboard', [Dashboard::class, 'dashboard']);
 
 Route::get('/warga', [PageWargaController::class, 'index'])->name('warga');
+Route::get('/perumahan', [PerumahanController::class, 'index'])->name('perumahan');
 // });
