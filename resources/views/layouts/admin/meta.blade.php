@@ -7,6 +7,7 @@
     content="inventory management, admin dashboard, bootstrap template, invoicing, estimates, business management, responsive admin, POS system">
 <meta name="author" content="Dreams Technologies">
 <meta name="robots" content="index, follow">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 {{-- <title>Dreams POS - Inventory Management & Admin Dashboard Template</title> --}}
 
 <title>

@@ -6,8 +6,8 @@
         <div class="page-header">
             <div class="add-item d-flex">
                 <div class="page-title">
-                    <h4>Add New</h4>
-                    <h6>Create new Perumahan</h6>
+                    <h4>Edit</h4>
+                    <h6>Edit Perumahan</h6>
                 </div>
             </div>
             <div class="page-btn">
@@ -15,8 +15,9 @@
             </div>
         </div>
         
-        <form action="{{ route('perumahan.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('perumahan.update', $data->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
             <div class="accordions-items-seperate" id="accordionExample">
                 <div class="accordion-item border mb-4">
                     <h2 class="accordion-header" id="headingOne">
@@ -46,43 +47,43 @@
                                 <div class="col-lg-4 col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">Name<span class="text-danger ms-1">*</span></label>
-                                        <input type="text" name="name" class="form-control" required>
+                                        <input type="text" name="name" class="form-control" value="{{ $data->name }}" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">Email<span class="text-danger ms-1">*</span></label>
-                                        <input type="email" name="email" class="form-control" required>
+                                        <input type="email" name="email" class="form-control"  value="{{ $data->email }}" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">Contact Number<span class="text-danger ms-1">*</span></label>
-                                        <input type="text" name="phone" class="form-control" required>
+                                        <input type="text" name="phone" class="form-control"  value="{{ $data->phone }}" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">Report Date<span class="text-danger ms-1">*</span></label>
-                                        <input type="number" name="report_date" class="form-control" required>
+                                        <input type="number" name="report_date" class="form-control"  value="{{ $data->report_date }}" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">Bank Account Number<span class="text-danger ms-1">*</span></label>
-                                        <input type="text" name="bank_account_number" class="form-control" required>
+                                        <input type="text" name="bank_account_number" class="form-control"  value="{{ $data->bank_account_number }}" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">Bank Account Name<span class="text-danger ms-1">*</span></label>
-                                        <input type="text" name="bank_account_name" class="form-control" required>
+                                        <input type="text" name="bank_account_name" class="form-control"  value="{{ $data->bank_account_name }}" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">Bank Name<span class="text-danger ms-1">*</span></label>
-                                        <input type="text" name="bank_name" class="form-control" required>
+                                        <input type="text" name="bank_name" class="form-control"  value="{{ $data->bank_name }}" required>
                                     </div>
                                 </div>
                             </div>

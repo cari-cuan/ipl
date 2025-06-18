@@ -40,7 +40,7 @@ class PerumahanController extends Controller
             'bank_account_name' => 'required|string|max:100',
         ]);
 
-        $product = PerumahanModel::create([
+        $data = PerumahanModel::create([
             'name' => $validatedData['name'],
             'email' => $validatedData['email'],
             'phone' => $validatedData['phone'],
@@ -53,7 +53,7 @@ class PerumahanController extends Controller
         ]);
 
         // Redirect atau response
-        return redirect()->route('perumahan')->with('success', 'Perumahan berhasil ditambahkan.');
+        return redirect()->route('perumahan')->with('success', 'Data berhasil ditambahkan.');
     }
 
     /**
@@ -69,7 +69,12 @@ class PerumahanController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = PerumahanModel::findOrFail($id);
+        if (!$data) {
+            return redirect()->route('perumahan')->with('error', 'Data tidak ditemukan.');
+        }
+
+        return view('pages.master.perumahan.edit', compact('data'));
     }
 
     /**
@@ -77,7 +82,20 @@ class PerumahanController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|max:255',
+            'phone' => 'required|string|max:20',
+            'report_date' => 'required|numeric',
+            'bank_account_number' => 'required|string|max:50',
+            'bank_name' => 'required|string|max:100',
+            'bank_account_name' => 'required|string|max:100',
+        ]);
+
+        $product = PerumahanModel::findOrFail($id);
+        $product->update($validatedData);
+        
+        return redirect()->route('perumahan')->with('success', 'Data berhasil diperbarui.');
     }
 
     /**
@@ -85,6 +103,14 @@ class PerumahanController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $perumahan = PerumahanModel::findOrFail($id);
+        $perumahan->delete();
+
+        if (request()->ajax()) {
+            return response()->json(['success' => true, 'message' => 'Data berhasil dihapus.']);
+        }
+
+        // Redirect kembali dengan pesan sukses
+        return redirect()->route('perumahan')->with('success', 'Data berhasil dihapus.');
     }
 }
