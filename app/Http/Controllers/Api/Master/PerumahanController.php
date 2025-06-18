@@ -21,6 +21,7 @@ class PerumahanController extends Controller
 
         // Query the model
         $query = PerumahanModel::select(
+            'id',
             'name',
             'email',
             'phone',
@@ -98,6 +99,8 @@ class PerumahanController extends Controller
             $row->bank_name = $list->bank_name;
             $row->bank_account_name = $list->bank_account_name;
             $row->updated_at = $list->updated_at->translatedFormat('d F Y H:i');
+            $row->action = '<a href="' . route('perumahan.edit', $list->id) . '" class="btn btn-sm btn-primary">Edit</a> ' .
+                            '<button class="btn btn-sm btn-danger btn-delete" data-id="' . $list->id . '">Delete</button>';
             $data[] = $row;
         }
 

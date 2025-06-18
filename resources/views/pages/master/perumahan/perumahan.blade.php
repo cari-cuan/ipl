@@ -45,12 +45,6 @@
                 <table class="table" id="perumahan-table">
                     <thead class="thead-light">
                         <tr>
-                            {{-- <th class="no-sort">
-                                <label class="checkboxs">
-                                    <input type="checkbox" id="select-all">
-                                    <span class="checkmarks"></span>
-                                </label>
-                            </th> --}}
                             <th>SKU </th>
                             <th>Product Name</th>
                             <th>Category</th>
@@ -60,7 +54,7 @@
                             <th>Qty</th>
                             <th>Created By</th>
                             <th>Created By</th>
-                            {{-- <th class="no-sort"></th> --}}
+                            <th class="no-sort">Action</th>
                         </tr>
                     </thead>
                 </table>
@@ -71,4 +65,25 @@
 
 @section('customjs')
     <script src="{{ URL::to('assets/custom/pages/perumahan/perumahan.js') }}?cache={{ ENV('APP_VERSION') }}"></script>
+    <script> 
+        $(document).on('click', '.btn-delete', function () {
+            let id = $(this).data('id');
+            if (confirm('Yakin hapus data ini?')) {
+                $.ajax({
+                    url: '/perumahan/' + id + '/destroy',
+                    type: 'DELETE',
+                    data: {
+                        _token: $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function (res) {
+                        table.ajax.reload(); // reload datatables
+                        alert('Data berhasil dihapus.');
+                    },
+                    error: function (xhr) {
+                        alert('Gagal menghapus data.');
+                    }
+                });
+            }
+        });
+    </script>
 @endsection

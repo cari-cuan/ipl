@@ -1,15 +1,4 @@
 $(document).ready(function () {
-    // 'warga_id',
-    //     'warga_nama',
-    //     'warga_email',
-    //     'warga_wa',
-    //     'warga_perumahan',
-    //     'warga_blok',
-    //     'warga_no',
-    //     'warga_tgl_daftar',
-    //     'warga_password',
-    //     'warga_status',
-    //     'warga_reset_token',
     table = $("#perumahan-table").DataTable({
         processing: true,
         serverSide: true,
@@ -67,7 +56,13 @@ $(document).ready(function () {
                 title: "Update Terakhir",
                 className: "text-center",
             },
-
+            {
+                data: "action",
+                title: "Action",
+                className: "text-center",
+                orderable: false,
+                searchable: false,
+            },
         ],
         order: [],
         ajax: {

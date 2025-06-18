@@ -16,7 +16,11 @@ Route::get('/', [Login::class, 'login']);
 Route::get('/dashboard', [Dashboard::class, 'dashboard']);
 
 Route::get('/warga', [PageWargaController::class, 'index'])->name('warga');
+
 Route::get('/perumahan', [PerumahanController::class, 'index'])->name('perumahan');
 Route::get('/perumahan/create', [PerumahanController::class, 'create'])->name('perumahan.create');
-Route::post('/perumahan/store', [PerumahanController::class, 'store'])->name('perumahan.store');
+Route::post('/perumahan', [PerumahanController::class, 'store'])->name('perumahan.store');
+Route::get('/perumahan/{id}/edit', [PerumahanController::class, 'edit'])->name('perumahan.edit');
+Route::put('/perumahan/{id}', [PerumahanController::class, 'update'])->name('perumahan.update');
+Route::delete('/perumahan/{id}/destroy', [PerumahanController::class, 'destroy'])->name('perumahan.destroy');
 // });
