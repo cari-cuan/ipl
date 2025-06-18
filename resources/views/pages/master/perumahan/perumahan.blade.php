@@ -27,7 +27,7 @@
             </li>
         </ul>
         <div class="page-btn">
-            <a href="add-product.html" class="btn btn-primary"><i class="ti ti-circle-plus me-1"></i>Add New</a>
+            <a href="{{ route('perumahan.create') }}" class="btn btn-primary"><i class="ti ti-circle-plus me-1"></i>Add New</a>
         </div>
         {{-- <div class="page-btn import">
             <a href="#" class="btn btn-secondary color" data-bs-toggle="modal" data-bs-target="#view-notes"><i

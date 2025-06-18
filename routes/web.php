@@ -17,4 +17,6 @@ Route::get('/dashboard', [Dashboard::class, 'dashboard']);
 
 Route::get('/warga', [PageWargaController::class, 'index'])->name('warga');
 Route::get('/perumahan', [PerumahanController::class, 'index'])->name('perumahan');
+Route::get('/perumahan/create', [PerumahanController::class, 'create'])->name('perumahan.create');
+Route::post('/perumahan/store', [PerumahanController::class, 'store'])->name('perumahan.store');
 // });
