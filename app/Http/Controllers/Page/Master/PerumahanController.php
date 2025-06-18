@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Page\Master;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Master\PerumahanModel;
 
 class PerumahanController extends Controller
 {
@@ -13,8 +12,7 @@ class PerumahanController extends Controller
      */
     public function index()
     {
-        $data = PerumahanModel::paginate(10);
-        return view('pages.master.perumahan.perumahan', compact('data'));
+        return view('pages.master.perumahan.perumahan');
     }
 
     /**
