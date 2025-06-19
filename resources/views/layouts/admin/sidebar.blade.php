@@ -21,7 +21,7 @@
                   <img src="{{ asset('assets/img/profiles/avatar-02.jpg') }}" alt="Img"
                       class="img-fluid rounded-circle">
               </div>
-              <h6 class="fs-14 fw-bold mb-1">Adrian Herman</h6>
+              <h6 class="fs-14 fw-bold mb-1">Wickdey</h6>
               <p class="fs-12">System Admin</p>
           </div>
           <div class="sidebar-nav mb-3">
@@ -38,7 +38,7 @@
                   <img src="assets/img/customer/customer15.jpg" alt="Img" class="img-fluid rounded-circle">
               </div>
               <div class="text-start sidebar-profile-info ms-2">
-                  <h6 class="fs-14 fw-bold mb-1">Adrian sssHerman</h6>
+                  <h6 class="fs-14 fw-bold mb-1">Wickdey</h6>
                   <p class="fs-12">System Admin</p>
               </div>
           </div>
