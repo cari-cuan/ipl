@@ -4,6 +4,7 @@ use App\Http\Controllers\Page\Master\PageWargaController;
 use App\Http\Controllers\Page\Master\PerumahanController;
 use App\Http\Controllers\Page\Master\ResidentialAreaController;
 use App\Http\Controllers\Page\Master\ResidentController;
+use App\Http\Controllers\Page\Master\HousingUnitController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Page\Auth\Login;
 use App\Http\Controllers\Page\Dashboard\Dashboard;
@@ -34,6 +35,18 @@ Route::controller(ResidentialAreaController::class)
 Route::controller(ResidentController::class)
     ->prefix('resident')
     ->name('resident')
+    ->group(function () {
+        Route::get('/', 'index')->name('.index');
+        Route::get('/create', 'create')->name('.create');
+        Route::post('/', 'store')->name('.store');
+        Route::get('/{id}/edit', 'edit')->name('.edit');
+        Route::put('/{id}', 'update')->name('.update');
+        Route::delete('/{id}', 'destroy')->name('.destroy');
+    });
+
+Route::controller(HousingUnitController::class)
+    ->prefix('housing-units')
+    ->name('housing-units')
     ->group(function () {
         Route::get('/', 'index')->name('.index');
         Route::get('/create', 'create')->name('.create');
