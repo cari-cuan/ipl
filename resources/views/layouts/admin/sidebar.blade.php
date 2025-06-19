@@ -92,7 +92,7 @@
                       <h6 class="submenu-hdr">Data Master</h6>
                       <ul>
                           <li><a href="{{ route('residential-areas.index') }}"><i class="ti ti-home fs-16 me-2"></i><span>Data Perumahan</span></a></li>
-                          <li><a href="billers.html"><i class="ti ti-user-up fs-16 me-2"></i><span>Data Unit Rumah</span></a>
+                          <li><a href="{{ route('housing-units.index') }}"><i class="ti ti-user-up fs-16 me-2"></i><span>Data Unit Rumah</span></a>
                           </li>
                           <li>
                               <a href="{{ route('resident.index') }}">
