@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Page\Master\PageWargaController;
 use App\Http\Controllers\Page\Master\PerumahanController;
+use App\Http\Controllers\Page\Master\ResidentialAreaController;
+use App\Http\Controllers\Page\Master\ResidentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Page\Auth\Login;
 use App\Http\Controllers\Page\Dashboard\Dashboard;
@@ -17,10 +19,28 @@ Route::get('/dashboard', [Dashboard::class, 'dashboard']);
 
 Route::get('/warga', [PageWargaController::class, 'index'])->name('warga');
 
-Route::get('/perumahan', [PerumahanController::class, 'index'])->name('perumahan');
-Route::get('/perumahan/create', [PerumahanController::class, 'create'])->name('perumahan.create');
-Route::post('/perumahan', [PerumahanController::class, 'store'])->name('perumahan.store');
-Route::get('/perumahan/{id}/edit', [PerumahanController::class, 'edit'])->name('perumahan.edit');
-Route::put('/perumahan/{id}', [PerumahanController::class, 'update'])->name('perumahan.update');
-Route::delete('/perumahan/{id}/destroy', [PerumahanController::class, 'destroy'])->name('perumahan.destroy');
+Route::controller(ResidentialAreaController::class)
+    ->prefix('residential-areas')
+    ->name('residential-areas')
+    ->group(function () {
+        Route::get('/', 'index')->name('.index');
+        Route::get('/create', 'create')->name('.create');
+        Route::post('/', 'store')->name('.store');
+        Route::get('/{id}/edit', 'edit')->name('.edit');
+        Route::put('/{id}', 'update')->name('.update');
+        Route::delete('/{id}', 'destroy')->name('.destroy');
+    });
+
+Route::controller(ResidentController::class)
+    ->prefix('resident')
+    ->name('resident')
+    ->group(function () {
+        Route::get('/', 'index')->name('.index');
+        Route::get('/create', 'create')->name('.create');
+        Route::post('/', 'store')->name('.store');
+        Route::get('/{id}/edit', 'edit')->name('.edit');
+        Route::put('/{id}', 'update')->name('.update');
+        Route::delete('/{id}', 'destroy')->name('.destroy');
+    });
+
 // });

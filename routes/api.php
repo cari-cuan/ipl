@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Api\Master\WargaController;
 use App\Http\Controllers\Api\Master\PerumahanController;
+use App\Http\Controllers\Api\Master\ResidentialAreaController;
+use App\Http\Controllers\Api\Master\ResidentController;
 use App\Http\Controllers\Auth\Authentication;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -28,3 +30,5 @@ Route::middleware('jwt')->group(function () {
 
 Route::post('/warga', [WargaController::class, 'datatables']);
 Route::post('/perumahan', [PerumahanController::class, 'datatables']);
+Route::post('/residential-area', [ResidentialAreaController::class, 'datatables']);
+Route::post('/resident', [ResidentController::class, 'datatables']);
