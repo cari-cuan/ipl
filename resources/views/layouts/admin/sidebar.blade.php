@@ -75,11 +75,15 @@
       <div class="sidebar-inner slimscroll">
           <div id="sidebar-menu" class="sidebar-menu">
               <ul>
-
                   <li class="submenu-open">
                       <h6 class="submenu-hdr">Keuangan</h6>
                       <ul>
-
+                          <li>
+                              <a href="{{ route('payment-types.index') }}">
+                                  <i class="ti ti-building-bank fs-16 me-2"></i>
+                                  <span>Tipe Pembayaran</span>
+                              </a>
+                          </li>
                           <li>
                               <a href="account-list-2.html">
                                   <i class="ti ti-building-bank fs-16 me-2"></i>
@@ -100,18 +104,14 @@
                                   <span>Data Warga</span>
                               </a>
                           </li>
-
                       </ul>
                   </li>
 
                   <li class="submenu-open">
                       <h6 class="submenu-hdr">Laporan</h6>
                       <ul>
-
-
                           <li><a href="income-report.html"><i class="ti ti-chart-ppf fs-16 me-2"></i><span>Laporan Iuran
                                       Warga</span></a></li>
-
                       </ul>
                   </li>
 
@@ -127,10 +127,6 @@
                                       Account Request</span></a></li>
                       </ul>
                   </li>
-
-
-
-
               </ul>
           </div>
       </div>
