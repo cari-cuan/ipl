@@ -38,4 +38,10 @@
   <script src="{{ asset('assets/js/script.js') }}" type="text/javascript"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
   <script src="{{ asset('assets/custom/ui/toaster/toaster.config.js') }}"></script>
+  <script>
+      let token = "";
+  </script>
   <script src="{{ asset('assets/custom/core/apps.js') }}"></script>
+  <script>
+      let host = "{{ env('APP_URL') }}";
+  </script>

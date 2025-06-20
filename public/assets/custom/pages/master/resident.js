@@ -1,13 +1,25 @@
 $(document).ready(function () {
+    $('.filter-pemilik').select2({
+        width: '100%',
+        placeholder: "Pilih Status",
+        allowClear: true
+    });
+    $('.search-keyword').on("keyup", function (e) {
+        table.ajax.reload();
+    });
+
+    $('.filter-pemilik').on("change", function (e) {
+        table.ajax.reload();
+    });
+
     table = $("#resident-table").DataTable({
         processing: true,
         serverSide: true,
         lengthMenu: [
-            [3, 25, 50, 100],
-            [3, 25, 50, 100],
+            [10, 25, 50, 100],
+            [10, 25, 50, 100],
         ],
         searching: false,
-        sDom: 't',
         info: false,
         dom: '<"top"i>rt<"card-footer justify-center md:justify-between flex-col md:flex-row gap-5 text-gray-600 text-2sm font-medium"flp><"clear">',
         columns: [
@@ -19,32 +31,26 @@ $(document).ready(function () {
             {
                 data: "name",
                 title: "Nama",
-                className: "text-center",
             },
             {
                 data: "email",
                 title: "Email",
-                className: "text-center",
             },
             {
                 data: "phone",
                 title: "WA",
-                className: "text-center",
             },
             {
                 data: "residentialAreaName",
                 title: "Nama Perumahan",
-                className: "text-center",
             },
             {
                 data: "ktp_number",
                 title: "Nomor KTP",
-                className: "text-center",
             },
             {
                 data: "join_date",
                 title: "Tanggal Bergabung",
-                className: "text-center",
             },
             {
                 data: "is_owner",
@@ -66,16 +72,16 @@ $(document).ready(function () {
         ],
         order: [],
         ajax: {
-            url: "http://127.0.0.1:8000/api/resident",
+            url: host + "/api/resident",
             type: "POST",
-            // headers: {
-            //     'Authorization': 'Bearer ' + api_token,
-            // },
+            headers: {
+                'Authorization': 'Bearer ' + token,
+            },
             data: function (e) {
                 e.filter = {
-                    "status_siswa": $(".filter-status").val(),
+                    "is_owner": $(".filter-pemilik").val(),
                 }
-                e.keyword = $(".search-keyword-table-siswa").val();
+                e.keyword = $(".search-keyword").val();
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
                 const myJSON = JSON.parse(XMLHttpRequest.responseText);
@@ -86,17 +92,10 @@ $(document).ready(function () {
                 }
             },
         },
+
         columnDefs: [
             {
-                "targets": '_all',
-                "createdCell": function (td, cellData, rowData, row, col) {
-                    $(td).css('padding-top', '3px')
-                    $(td).css('margin', '0px')
-                    $(td).css('padding-bottom', '3px')
-                }
-            },
-            {
-                targets: [0, 6],
+                targets: [0, 8, 9],
                 orderable: false,
                 className: "dt-head-center text-center",
             },
