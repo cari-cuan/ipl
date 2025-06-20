@@ -36,7 +36,7 @@ class ResidentController extends Controller
             5 => 'join_date',
             6 => 'status',
             7 => 'updated_at',
-            8 => 'residentialArea.name', 
+            8 => 'residentialArea.name',
         ];
         // Get the order column name based on the index
         if ($orderDirection !== 'asc' && $orderDirection !== 'desc') {
@@ -47,7 +47,11 @@ class ResidentController extends Controller
         // Apply keyword search if provided
         if (!empty($keyword)) {
             $query->where(function ($q) use ($keyword) {
-                $q->where('name', 'like', "%{$keyword}%");
+                $q->orWhere('name', 'like', "%{$keyword}%");
+                $q->orWhere('email', 'like', "%{$keyword}%");
+                $q->orWhere('phone', 'like', "%{$keyword}%");
+                $q->orWhere('ktp_number', 'like', "%{$keyword}%");
+                $q->orWhere('status', 'like', "%{$keyword}%");
             });
         }
 
@@ -87,11 +91,20 @@ class ResidentController extends Controller
             $row->phone = $list->phone;
             $row->residentialAreaName = $list->residentialArea->name;
             $row->ktp_number = $list->ktp_number;
-            $row->is_owner = $list->is_owner;
+            if ($list->is_owner == 1) {
+                $row->is_owner = '<i class="fa fa-check text-success"></i>';
+            } else {
+                $row->is_owner = '<i class="fa fa-times text-danger"></i>';
+            }
+            // $row->is_owner = $list->is_owner;
             $row->join_date = $list->join_date;
             $row->updated_at = $list->updated_at->translatedFormat('d F Y H:i');
-            $row->action = '<a href="' . route('resident.edit', $list->id) . '" class="btn btn-sm btn-primary">Edit</a> ' .
-                            '<button class="btn btn-sm btn-danger btn-delete" data-id="' . $list->id . '">Delete</button>';
+            $row->action = '
+            <div class="btn-group me-2">
+                        <a href="' . route('resident.edit', $list->id) . '" class="btn btn-light"><i class="fa fa-edit"></i></a>
+                        <button class="btn btn-light" data-id="' . $list->id . '"><i class="fa fa-trash"></i></button>
+                      </div>';
+
             $data[] = $row;
         }
 

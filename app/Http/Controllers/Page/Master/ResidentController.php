@@ -47,7 +47,7 @@ class ResidentController extends Controller
             'email' => $validatedData['email'],
             'phone' => $validatedData['phone'],
             'ktp_number' => $validatedData['ktp_number'],
-            'is_owner' => $validatedData['is_owner'],
+            'is_owner' => empty($validatedData['is_owner']) ? 0 : 1,
             'join_date' => $validatedData['join_date'],
             'created_at' => now(),
             'updated_at' => now(),
@@ -96,7 +96,7 @@ class ResidentController extends Controller
             'email' => $validatedData['email'],
             'phone' => $validatedData['phone'],
             'ktp_number' => $validatedData['ktp_number'],
-            'is_owner' => $validatedData['is_owner'],
+            'is_owner' => empty($validatedData['is_owner']) ? 0 : 1,
             'join_date' => $validatedData['join_date'],
             'updated_at' => now(),
         ]);
