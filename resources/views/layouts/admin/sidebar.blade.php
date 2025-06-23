@@ -35,7 +35,8 @@
       <div class="sidebar-header p-3 pb-0 pt-2">
           <div class="text-center rounded bg-light p-2 mb-4 sidebar-profile d-flex align-items-center">
               <div class="avatar avatar-md onlin">
-                  <img src="assets/img/customer/customer15.jpg" alt="Img" class="img-fluid rounded-circle">
+                  <img src="{{ asset('assets/img/profiles/avatar-02.jpg') }}" alt="Img"
+                      class="img-fluid rounded-circle">
               </div>
               <div class="text-start sidebar-profile-info ms-2">
                   <h6 class="fs-14 fw-bold mb-1">Wickdey</h6>

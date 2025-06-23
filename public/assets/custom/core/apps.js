@@ -9,9 +9,7 @@ function logout() {
 $(document).ready(function () {
     var token = localStorage.getItem("token");
     if (token == null) {
-        // alert(token);
         location.href = "/";
-
     } else {
         document.cookie = "auth_token=; path=/;";
     }

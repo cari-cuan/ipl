@@ -35,6 +35,8 @@
 <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/dataTables.bootstrap5.min.css') }}">
 
+<link rel="stylesheet" href="{{ asset('assets/plugins/material/materialdesignicons.css') }}">
 
-<script src="assets/js/theme-script.js?q=4" type="text/javascript"></script>
+<script src="{{ asset('assets/js/theme-script.js') }}" type="text/javascript"></script>
+<link rel="stylesheet" href="{{ asset('assets/plugins/select2/css/select2.min.css') }}">
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
