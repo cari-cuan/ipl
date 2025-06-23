@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Page\Master;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Master\ResidentPaymentModel;
+use App\Models\Master\ResidentModel;
+use App\Models\Master\PaymentTypeModel;
 
 class ResidentPaymentController extends Controller
 {
@@ -12,7 +15,7 @@ class ResidentPaymentController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.master.residentPayment.index');
     }
 
     /**
@@ -20,7 +23,9 @@ class ResidentPaymentController extends Controller
      */
     public function create()
     {
-        //
+        $residents = ResidentModel::all();
+        $paymentTypes = PaymentTypeModel::all();
+        return view('pages.master.residentPayment.create', compact('residents', 'paymentTypes'));
     }
 
     /**
@@ -28,7 +33,28 @@ class ResidentPaymentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'resident_id' => 'required|numeric',
+            'payment_type_id' => 'required|numeric',
+            'amount' => 'required|numeric|min:0',
+            'payment_month' => 'required|date',
+            'notes' => 'nullable|string|max:500',
+            'event_name' => 'nullable|string|max:255',
+        ]);
+
+        ResidentPaymentModel::create([
+            'resident_id' => $validatedData['resident_id'],
+            'payment_type_id' => $validatedData['payment_type_id'],
+            'amount' => $validatedData['amount'],
+            'payment_month' => $validatedData['payment_month'],
+            'payment_status' => '',
+            'notes' => $validatedData['notes'],
+            'event_name' => $validatedData['event_name'],
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        return redirect()->route('resident-payments.index')->with('success', 'Resident payment created successfully.');
     }
 
     /**
@@ -44,7 +70,10 @@ class ResidentPaymentController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = ResidentPaymentModel::findOrFail($id);
+        $residents = ResidentModel::all();
+        $paymentTypes = PaymentTypeModel::all();
+        return view('pages.master.residentPayment.edit', compact('data', 'residents', 'paymentTypes'));
     }
 
     /**
@@ -52,7 +81,27 @@ class ResidentPaymentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validatedData = $request->validate([
+            'resident_id' => 'required|numeric',
+            'payment_type_id' => 'required|numeric',
+            'amount' => 'required|numeric|min:0',
+            'payment_month' => 'required|date',
+            'notes' => 'nullable|string|max:500',
+            'event_name' => 'nullable|string|max:255',
+        ]);
+
+        $residentPayment = ResidentPaymentModel::findOrFail($id);
+        $residentPayment->update([
+            'resident_id' => $validatedData['resident_id'],
+            'payment_type_id' => $validatedData['payment_type_id'],
+            'amount' => $validatedData['amount'],
+            'payment_month' => $validatedData['payment_month'],
+            'notes' => $validatedData['notes'],
+            'event_name' => $validatedData['event_name'],
+            'updated_at' => now(),
+        ]);
+
+        return redirect()->route('resident-payments.index')->with('success', 'Resident payment updated successfully.');
     }
 
     /**
@@ -60,6 +109,13 @@ class ResidentPaymentController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $residentPayment = ResidentPaymentModel::findOrFail($id);
+        $residentPayment->delete();
+
+        if(request()->ajax()) {
+            return response()->json(['success' => 'Resident payment deleted successfully.']);
+        }
+
+        return redirect()->route('resident-payments.index')->with('success', 'Resident payment deleted successfully.');
     }
 }

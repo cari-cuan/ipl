@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\Page\Master\PageWargaController;
-use App\Http\Controllers\Page\Master\PerumahanController;
 use App\Http\Controllers\Page\Master\ResidentialAreaController;
 use App\Http\Controllers\Page\Master\ResidentController;
 use App\Http\Controllers\Page\Master\HousingUnitController;
@@ -19,8 +17,6 @@ use GuzzleHttp\Psr7\Request;
 // Route::middleware([CheckAccess::class])->group(function () {
 Route::get('/', [Login::class, 'login']);
 Route::get('/dashboard', [Dashboard::class, 'dashboard']);
-
-Route::get('/warga', [PageWargaController::class, 'index'])->name('warga');
 
 Route::controller(ResidentialAreaController::class)
     ->prefix('residential-areas')

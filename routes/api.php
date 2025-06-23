@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\Master\ResidentialAreaController;
 use App\Http\Controllers\Api\Master\ResidentController;
 use App\Http\Controllers\Api\Master\HousingUnitController;
 use App\Http\Controllers\Api\Master\PaymentTypeController;
+use App\Http\Controllers\Api\Master\ResidentPaymentController;
 use App\Http\Controllers\Auth\Authentication;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -36,3 +37,4 @@ Route::post('/residential-area', [ResidentialAreaController::class, 'datatables'
 Route::post('/resident', [ResidentController::class, 'datatables']);
 Route::post('/housing-units', [HousingUnitController::class, 'datatables']);
 Route::post('/payment-type', [PaymentTypeController::class, 'datatables']);
+Route::post('/resident-payment', [ResidentPaymentController::class, 'datatables']);

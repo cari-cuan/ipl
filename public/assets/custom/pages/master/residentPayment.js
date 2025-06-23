@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    table = $("#perumahan-table").DataTable({
+    table = $("#resident-payment-table").DataTable({
         processing: true,
         serverSide: true,
         lengthMenu: [
@@ -17,38 +17,33 @@ $(document).ready(function () {
                 className: "text-center",
             },
             {
-                data: "name",
+                data: "residentName",
                 title: "Nama",
                 className: "text-center",
             },
             {
-                data: "email",
-                title: "Email",
+                data: "paymentType",
+                title: "Jenis",
                 className: "text-center",
             },
             {
-                data: "phone",
-                title: "WA",
+                data: "payment_date",
+                title: "Tanggal",
                 className: "text-center",
             },
             {
-                data: "report_date",
-                title: "Tanggal Lapor",
+                data: "amount",
+                title: "Total",
                 className: "text-center",
             },
             {
-                data: "bank_account_number",
-                title: "Nomor Rekening",
+                data: "payment_month",
+                title: "Bulan",
                 className: "text-center",
             },
             {
-                data: "bank_name",
-                title: "Nama Bank",
-                className: "text-center",
-            },
-            {
-                data: "bank_account_name",
-                title: "Nama Rekening",
+                data: "payment_status",
+                title: "Status",
                 className: "text-center",
             },
             {
@@ -66,7 +61,7 @@ $(document).ready(function () {
         ],
         order: [],
         ajax: {
-            url: "http://127.0.0.1:8000/api/perumahan",
+            url: "http://127.0.0.1:8000/api/resident-payment",
             type: "POST",
             // headers: {
             //     'Authorization': 'Bearer ' + api_token,
@@ -96,7 +91,7 @@ $(document).ready(function () {
                 }
             },
             {
-                targets: [0, 6],
+                targets: [0, 10],
                 orderable: false,
                 className: "dt-head-center text-center",
             },

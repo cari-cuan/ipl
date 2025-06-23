@@ -75,24 +75,7 @@
       <div class="sidebar-inner slimscroll">
           <div id="sidebar-menu" class="sidebar-menu">
               <ul>
-                  <li class="submenu-open">
-                      <h6 class="submenu-hdr">Keuangan</h6>
-                      <ul>
-                          <li>
-                              <a href="{{ route('payment-types.index') }}">
-                                  <i class="ti ti-building-bank fs-16 me-2"></i>
-                                  <span>Tipe Pembayaran</span>
-                              </a>
-                          </li>
-                          <li>
-                              <a href="account-list-2.html">
-                                  <i class="ti ti-building-bank fs-16 me-2"></i>
-                                  <span>Data Pembayaran</span>
-                              </a>
-                          </li>
-                      </ul>
-                  </li>
-                  <li class="submenu-open">
+                    <li class="submenu-open">
                       <h6 class="submenu-hdr">Data Master</h6>
                       <ul>
                           <li><a href="{{ route('residential-areas.index') }}"><i class="ti ti-home fs-16 me-2"></i><span>Data Perumahan</span></a></li>
@@ -106,7 +89,23 @@
                           </li>
                       </ul>
                   </li>
-
+                  <li class="submenu-open">
+                      <h6 class="submenu-hdr">Keuangan</h6>
+                      <ul>
+                          <li>
+                              <a href="{{ route('payment-types.index') }}">
+                                  <i class="ti ti-building-bank fs-16 me-2"></i>
+                                  <span>Tipe Pembayaran</span>
+                              </a>
+                          </li>
+                          <li>
+                              <a href="{{ route('resident-payments.index') }}">
+                                  <i class="ti ti-building-bank fs-16 me-2"></i>
+                                  <span>Data Pembayaran</span>
+                              </a>
+                          </li>
+                      </ul>
+                  </li>
                   <li class="submenu-open">
                       <h6 class="submenu-hdr">Laporan</h6>
                       <ul>
