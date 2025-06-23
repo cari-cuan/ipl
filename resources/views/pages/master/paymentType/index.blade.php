@@ -37,22 +37,32 @@
 
     <!-- /product list -->
     <div class="card">
+        <div class="card-body">
+            <form action="#">
+                <div class="mb-3 row">
+                    <label class="col-form-label col-md-2">Pencarian</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control  search-keyword" placeholder="Cari data....">
+                    </div>
+                </div>
+                {{-- <div class="mb-3 row">
+                    <label class="col-form-label col-md-2">Pemilik </label>
+                    <div class="col-md-10">
+                        <select class="js-example-basic-single select2 filter-pemilik form-control">
+                            <option value="">-- Pilih --</option>
+                            <option value="1">YA</option>
+                            <option value="0">Tidak</option>
+                        </select>
+                    </div>
+                </div> --}}
+            </form>
+        </div>
         <div class="card-body p-0">
             {{-- <div class="table-responsive">
                 <table class="table" id="warga"></table>
             </div> --}}
             <div class="table-responsive">
                 <table class="table" id="payment-type-table">
-                    <thead class="thead-light">
-                        <tr>
-                            <th>No</th>
-                            <th>Name</th>
-                            <th>Berkala</th>
-                            <th>Deskripsi</th>
-                            <th>Last Update</th>
-                            <th class="no-sort">Action</th>
-                        </tr>
-                    </thead>
                 </table>
             </div>
         </div>

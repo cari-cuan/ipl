@@ -56,7 +56,10 @@ class ResidentialAreaController extends Controller
         // Apply keyword search if provided
         if (!empty($keyword)) {
             $query->where(function ($q) use ($keyword) {
-                $q->where('name', 'like', "%{$keyword}%");
+                $q->orWhere('name', 'like', "%{$keyword}%");
+                $q->orWhere('email', 'like', "%{$keyword}%");
+                $q->orWhere('phone', 'like', "%{$keyword}%");
+                $q->orWhere('city', 'like', "%{$keyword}%");
             });
         }
 
@@ -99,8 +102,10 @@ class ResidentialAreaController extends Controller
             $row->province = $list->province;
             $row->postal_code = $list->postal_code;
             $row->updated_at = $list->updated_at->translatedFormat('d F Y H:i');
-            $row->action = '<a href="' . route('residential-areas.edit', $list->id) . '" class="btn btn-sm btn-primary">Edit</a> ' .
-                            '<button class="btn btn-sm btn-danger btn-delete" data-id="' . $list->id . '">Delete</button>';
+            $row->action = '<div class="btn-group me-2">
+                                <a href="' . route('residential-areas.edit', $list->id) . '" class="btn btn-light"><i class="fa fa-edit"></i></a>
+                                <button class="btn btn-light" data-id="' . $list->id . '"><i class="fa fa-trash"></i></button>
+                            </div>';
             $data[] = $row;
         }
 
