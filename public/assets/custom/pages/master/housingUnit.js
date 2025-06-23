@@ -1,4 +1,8 @@
 $(document).ready(function () {
+    $('.search-keyword').on("keyup", function (e) {
+        table.ajax.reload();
+    });
+
     table = $("#housing-unit-table").DataTable({
         processing: true,
         serverSide: true,
@@ -61,16 +65,16 @@ $(document).ready(function () {
         ],
         order: [],
         ajax: {
-            url: "http://127.0.0.1:8000/api/housing-units",
+            url: host + "/api/housing-units",
             type: "POST",
-            // headers: {
-            //     'Authorization': 'Bearer ' + api_token,
-            // },
+            headers: {
+                'Authorization': 'Bearer ' + token,
+            },
             data: function (e) {
-                e.filter = {
-                    "status_siswa": $(".filter-status").val(),
-                }
-                e.keyword = $(".search-keyword-table-siswa").val();
+                // e.filter = {
+                //     "is_owner": $(".filter-pemilik").val(),
+                // }
+                e.keyword = $(".search-keyword").val();
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
                 const myJSON = JSON.parse(XMLHttpRequest.responseText);

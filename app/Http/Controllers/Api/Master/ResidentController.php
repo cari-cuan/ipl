@@ -99,11 +99,10 @@ class ResidentController extends Controller
             // $row->is_owner = $list->is_owner;
             $row->join_date = $list->join_date;
             $row->updated_at = $list->updated_at->translatedFormat('d F Y H:i');
-            $row->action = '
-            <div class="btn-group me-2">
-                        <a href="' . route('resident.edit', $list->id) . '" class="btn btn-light"><i class="fa fa-edit"></i></a>
-                        <button class="btn btn-light" data-id="' . $list->id . '"><i class="fa fa-trash"></i></button>
-                      </div>';
+            $row->action = '<div class="btn-group me-2">
+                                <a href="' . route('resident.edit', $list->id) . '" class="btn btn-light"><i class="fa fa-edit"></i></a>
+                                <button class="btn btn-light" data-id="' . $list->id . '"><i class="fa fa-trash"></i></button>
+                            </div>';
 
             $data[] = $row;
         }
