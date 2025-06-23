@@ -1,0 +1,69 @@
+@extends('pages.index')
+@section('title', 'Dashboard')
+
+@section('content')
+    <div class="content">
+        <div class="page-header">
+            <div class="add-item d-flex">
+                <div class="page-title">
+                    <h4>Add New</h4>
+                    <h6>Create new data</h6>
+                </div>
+            </div>
+            <div class="page-btn">
+                <a href="{{ route('payment-types.index') }}" class="btn btn-secondary"><i data-feather="arrow-left" class="me-2"></i>Back to List</a>
+            </div>
+        </div>
+        
+        <form action="{{ route('payment-types.store') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="accordions-items-seperate" id="accordionExample">
+                <div class="accordion-item border mb-4">
+                    <h2 class="accordion-header" id="headingOne">
+                        <div class="accordion-button bg-white" data-bs-toggle="collapse" data-bs-target="#collapseOne"  aria-controls="collapseOne">
+                            <div class="d-flex align-items-center justify-content-between flex-fill">
+                                <h5 class="d-inline-flex align-items-center"><i class="ti ti-users text-primary me-2"></i><span>General Information</span></h5>
+                            </div>
+                        </div>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body border-top">
+                        <div class="new-employee-field">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Name<span class="text-danger ms-1">*</span></label>
+                                        <input type="text" name="name" class="form-control" value="{{ old('name') }}" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="mb-3 form-check mt-4">
+                                        <input type="checkbox" name="is_recurring" value="1" class="form-check-input" id="is_recurring"
+                                            {{ old('is_recurring') ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="is_recurring">Is Recurring</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Description<span class="text-danger ms-1">*</span></label>
+                                        <textarea name="description" class="form-control" rows="3" required>{{ old('description') }}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-end mb-3">
+                {{-- <button type="button" class="btn btn-secondary me-2">Cancel</button> --}}
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </div>
+@endsection
+
+@section('customjs')
+    <script src="{{ URL::to('assets/custom/pages/master/paymentType.js') }}?cache={{ ENV('APP_VERSION') }}"></script>
+@endsection

@@ -5,7 +5,9 @@ namespace App\Models\Master;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Master\ResidentialAreaModel;
 use App\Models\Master\HousingUnitModel;
+use App\Models\Master\ResidentPaymentModel;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ResidentModel extends Model
 {
@@ -33,5 +35,10 @@ class ResidentModel extends Model
     public function housingUnits()
     {
         return $this->hasMany(HousingUnitModel::class, 'resident_id');
+    }
+
+    public function residentPayment(): HasMany
+    {
+        return $this->hasMany(ResidentPaymentModel::class, 'resident_id');
     }
 }

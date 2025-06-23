@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Api\Master;
 
 use App\Http\Controllers\Controller;
-use App\Models\Master\PerumahanModel;
+use App\Models\Master\PaymentTypeModel;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class PerumahanController extends Controller
+class PaymentTypeController extends Controller
 {
     public function datatables(Request $request): JsonResponse
     {
@@ -20,15 +20,12 @@ class PerumahanController extends Controller
         $start = ($page - 1) * $size;
 
         // Query the model
-        $query = PerumahanModel::select(
+        $query = PaymentTypeModel::select(
             'id',
             'name',
-            'email',
-            'phone',
-            'report_date',
-            'bank_account_number',
-            'bank_name',
-            'bank_account_name',
+            'is_recurring',
+            'description',
+            'created_at',
             'updated_at',
         );
 
@@ -39,13 +36,9 @@ class PerumahanController extends Controller
         // Map DataTables column index to database column name
         $columns = [
             0 => 'name',
-            1 => 'email',
-            2 => 'phone',
-            3 => 'report_date',
-            4 => 'bank_account_number',
-            5 => 'bank_name',
-            6 => 'bank_account_name',
-            7 => 'updated_at',
+            1 => 'is_recurring',
+            2 => 'description',
+            3 => 'updated_at',
         ];
         // Get the order column name based on the index
         if ($orderDirection !== 'asc' && $orderDirection !== 'desc') {
@@ -75,7 +68,7 @@ class PerumahanController extends Controller
         $query->orderBy($orderColumn, $orderDirection);
 
         // Total records (without filters)
-        $recordsTotal = PerumahanModel::count();
+        $recordsTotal = PaymentTypeModel::count();
 
         // Get filtered record count based on the search query
         $recordsFiltered = $query->count();
@@ -92,14 +85,10 @@ class PerumahanController extends Controller
             $row = new \stdClass(); // Create an empty object for each row
             $row->no = $no; // Index number
             $row->name = $list->name;
-            $row->email = $list->email;
-            $row->phone = $list->phone;
-            $row->report_date = $list->report_date;
-            $row->bank_account_number = $list->bank_account_number;
-            $row->bank_name = $list->bank_name;
-            $row->bank_account_name = $list->bank_account_name;
+            $row->is_recurring = $list->is_recurring;
+            $row->description = $list->description;
             $row->updated_at = $list->updated_at->translatedFormat('d F Y H:i');
-            $row->action = '<a href="' . route('perumahan.edit', $list->id) . '" class="btn btn-sm btn-primary">Edit</a> ' .
+            $row->action = '<a href="' . route('payment-types.edit', $list->id) . '" class="btn btn-sm btn-primary">Edit</a> ' .
                             '<button class="btn btn-sm btn-danger btn-delete" data-id="' . $list->id . '">Delete</button>';
             $data[] = $row;
         }

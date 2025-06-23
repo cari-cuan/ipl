@@ -1,16 +1,5 @@
 $(document).ready(function () {
-    // 'warga_id',
-    //     'warga_nama',
-    //     'warga_email',
-    //     'warga_wa',
-    //     'warga_perumahan',
-    //     'warga_blok',
-    //     'warga_no',
-    //     'warga_tgl_daftar',
-    //     'warga_password',
-    //     'warga_status',
-    //     'warga_reset_token',
-    table = $("#warga").DataTable({
+    table = $("#resident-payment-table").DataTable({
         processing: true,
         serverSide: true,
         lengthMenu: [
@@ -28,55 +17,51 @@ $(document).ready(function () {
                 className: "text-center",
             },
             {
-                data: "warga_id",
-                title: "ID",
-                className: "text-center",
-            },
-            {
-                data: "warga_nama",
+                data: "residentName",
                 title: "Nama",
                 className: "text-center",
             },
             {
-                data: "warga_email",
-                title: "Email",
+                data: "paymentType",
+                title: "Jenis",
                 className: "text-center",
             },
             {
-                data: "warga_wa",
-                title: "WA",
+                data: "payment_date",
+                title: "Tanggal",
                 className: "text-center",
             },
             {
-                data: "warga_blok",
-                title: "Blok",
+                data: "amount",
+                title: "Total",
                 className: "text-center",
             },
             {
-                data: "warga_no",
-                title: "No",
+                data: "payment_month",
+                title: "Bulan",
                 className: "text-center",
             },
             {
-                data: "warga_tgl_daftar",
-                title: "Tgl Daftar",
-                className: "text-center",
-            },
-            {
-                data: "warga_status",
+                data: "payment_status",
                 title: "Status",
                 className: "text-center",
             },
             {
-                data: "warga_reset_token",
-                title: "Reset Token",
+                data: "updated_at",
+                title: "Update Terakhir",
                 className: "text-center",
             },
-
+            {
+                data: "action",
+                title: "Action",
+                className: "text-center",
+                orderable: false,
+                searchable: false,
+            },
         ],
         order: [],
         ajax: {
-            url: "http://127.0.0.1:8000/api/warga",
+            url: "http://127.0.0.1:8000/api/resident-payment",
             type: "POST",
             // headers: {
             //     'Authorization': 'Bearer ' + api_token,
@@ -106,7 +91,7 @@ $(document).ready(function () {
                 }
             },
             {
-                targets: [0, 6],
+                targets: [0, 10],
                 orderable: false,
                 className: "dt-head-center text-center",
             },

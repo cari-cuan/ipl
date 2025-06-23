@@ -5,8 +5,8 @@
     <div class="page-header">
         <div class="add-item d-flex">
             <div class="page-title">
-                <h4 class="fw-bold">Perumahan</h4>
-                <h6>Manage perumahan</h6>
+                <h4 class="fw-bold">Tipe Pembayaran</h4>
+                <h6>Manage tipe pembayaran</h6>
             </div>
         </div>
         <ul class="table-top-head">
@@ -27,7 +27,7 @@
             </li>
         </ul>
         <div class="page-btn">
-            <a href="{{ route('perumahan.create') }}" class="btn btn-primary"><i class="ti ti-circle-plus me-1"></i>Add New</a>
+            <a href="{{ route('payment-types.create') }}" class="btn btn-primary"><i class="ti ti-circle-plus me-1"></i>Add New</a>
         </div>
         {{-- <div class="page-btn import">
             <a href="#" class="btn btn-secondary color" data-bs-toggle="modal" data-bs-target="#view-notes"><i
@@ -42,18 +42,14 @@
                 <table class="table" id="warga"></table>
             </div> --}}
             <div class="table-responsive">
-                <table class="table" id="perumahan-table">
+                <table class="table" id="payment-type-table">
                     <thead class="thead-light">
                         <tr>
-                            <th>SKU </th>
-                            <th>Product Name</th>
-                            <th>Category</th>
-                            <th>Brand</th>
-                            <th>Price</th>
-                            <th>Unit</th>
-                            <th>Qty</th>
-                            <th>Created By</th>
-                            <th>Created By</th>
+                            <th>No</th>
+                            <th>Name</th>
+                            <th>Berkala</th>
+                            <th>Deskripsi</th>
+                            <th>Last Update</th>
                             <th class="no-sort">Action</th>
                         </tr>
                     </thead>
@@ -64,13 +60,13 @@
 @endsection
 
 @section('customjs')
-    <script src="{{ URL::to('assets/custom/pages/perumahan/perumahan.js') }}?cache={{ ENV('APP_VERSION') }}"></script>
+    <script src="{{ URL::to('assets/custom/pages/master/paymentType.js') }}?cache={{ ENV('APP_VERSION') }}"></script>
     <script> 
         $(document).on('click', '.btn-delete', function () {
             let id = $(this).data('id');
             if (confirm('Yakin hapus data ini?')) {
                 $.ajax({
-                    url: '/perumahan/' + id + '/destroy',
+                    url: '/payment-types/' + id,
                     type: 'DELETE',
                     data: {
                         _token: $('meta[name="csrf-token"]').attr('content')

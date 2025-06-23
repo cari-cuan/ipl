@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\Page\Master\PageWargaController;
-use App\Http\Controllers\Page\Master\PerumahanController;
 use App\Http\Controllers\Page\Master\ResidentialAreaController;
 use App\Http\Controllers\Page\Master\ResidentController;
 use App\Http\Controllers\Page\Master\HousingUnitController;
+use App\Http\Controllers\Page\Master\PaymentTypeController;
+use App\Http\Controllers\Page\Master\ResidentPaymentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Page\Auth\Login;
 use App\Http\Controllers\Page\Dashboard\Dashboard;
@@ -17,8 +17,6 @@ use GuzzleHttp\Psr7\Request;
 // Route::middleware([CheckAccess::class])->group(function () {
 Route::get('/', [Login::class, 'login']);
 Route::get('/dashboard', [Dashboard::class, 'dashboard']);
-
-Route::get('/warga', [PageWargaController::class, 'index'])->name('warga');
 
 Route::controller(ResidentialAreaController::class)
     ->prefix('residential-areas')
@@ -47,6 +45,30 @@ Route::controller(ResidentController::class)
 Route::controller(HousingUnitController::class)
     ->prefix('housing-units')
     ->name('housing-units')
+    ->group(function () {
+        Route::get('/', 'index')->name('.index');
+        Route::get('/create', 'create')->name('.create');
+        Route::post('/', 'store')->name('.store');
+        Route::get('/{id}/edit', 'edit')->name('.edit');
+        Route::put('/{id}', 'update')->name('.update');
+        Route::delete('/{id}', 'destroy')->name('.destroy');
+    });
+
+Route::controller(PaymentTypeController::class)
+    ->prefix('payment-types')
+    ->name('payment-types')
+    ->group(function () {
+        Route::get('/', 'index')->name('.index');
+        Route::get('/create', 'create')->name('.create');
+        Route::post('/', 'store')->name('.store');
+        Route::get('/{id}/edit', 'edit')->name('.edit');
+        Route::put('/{id}', 'update')->name('.update');
+        Route::delete('/{id}', 'destroy')->name('.destroy');
+    });
+
+Route::controller(ResidentPaymentController::class)
+    ->prefix('resident-payments')
+    ->name('resident-payments')
     ->group(function () {
         Route::get('/', 'index')->name('.index');
         Route::get('/create', 'create')->name('.create');

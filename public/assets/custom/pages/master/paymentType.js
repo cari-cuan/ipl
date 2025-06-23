@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    table = $("#perumahan-table").DataTable({
+    table = $("#payment-type-table").DataTable({
         processing: true,
         serverSide: true,
         lengthMenu: [
@@ -18,37 +18,17 @@ $(document).ready(function () {
             },
             {
                 data: "name",
-                title: "Nama",
+                title: "Title",
                 className: "text-center",
             },
             {
-                data: "email",
-                title: "Email",
+                data: "is_recurring",
+                title: "Berkala",
                 className: "text-center",
             },
             {
-                data: "phone",
-                title: "WA",
-                className: "text-center",
-            },
-            {
-                data: "report_date",
-                title: "Tanggal Lapor",
-                className: "text-center",
-            },
-            {
-                data: "bank_account_number",
-                title: "Nomor Rekening",
-                className: "text-center",
-            },
-            {
-                data: "bank_name",
-                title: "Nama Bank",
-                className: "text-center",
-            },
-            {
-                data: "bank_account_name",
-                title: "Nama Rekening",
+                data: "description",
+                title: "Deskripsi",
                 className: "text-center",
             },
             {
@@ -66,7 +46,7 @@ $(document).ready(function () {
         ],
         order: [],
         ajax: {
-            url: "http://127.0.0.1:8000/api/perumahan",
+            url: "http://127.0.0.1:8000/api/payment-type",
             type: "POST",
             // headers: {
             //     'Authorization': 'Bearer ' + api_token,
@@ -96,7 +76,7 @@ $(document).ready(function () {
                 }
             },
             {
-                targets: [0, 6],
+                targets: [0, 5],
                 orderable: false,
                 className: "dt-head-center text-center",
             },
