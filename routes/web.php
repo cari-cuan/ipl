@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\Page\Master\ResidentialAreaController;
 use App\Http\Controllers\Page\Master\ResidentController;
 use App\Http\Controllers\Page\Master\HousingUnitController;
@@ -15,7 +16,8 @@ use GuzzleHttp\Psr7\Request;
 // });
 
 // Route::middleware([CheckAccess::class])->group(function () {
-Route::get('/', [Login::class, 'login']);
+Route::get('/', [LandingPageController::class, 'index']);
+Route::get('/login', [Login::class, 'login']);
 Route::get('/dashboard', [Dashboard::class, 'dashboard']);
 
 Route::controller(ResidentialAreaController::class)

@@ -1,0 +1,12 @@
+<script src="assets/js/jquery-3.7.1.min.js" type="text/javascript"></script>
+<script src="assets/js/feather.min.js" type="text/javascript"></script>
+<script src="assets/js/owl.carousel.min.js" type="text/javascript"></script>
+<script src="assets/js/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="assets/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+<script src="assets/plugins/fancybox/jquery.fancybox.min.js" type="text/javascript"></script>
+<script src="assets/plugins/select2/js/select2.min.js" type="text/javascript"></script>
+<script src="assets/plugins/theia-sticky-sidebar/ResizeSensor.js" type="text/javascript"></script>
+<script src="assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js" type="text/javascript"></script>
+<script src="assets/plugins/%40simonwep/pickr/pickr.es5.min.js" type="text/javascript"></script>
+<script src="assets/js/theme-colorpicker.js" type="text/javascript"></script>
+<script src="assets/js/script.js" type="text/javascript"></script>
