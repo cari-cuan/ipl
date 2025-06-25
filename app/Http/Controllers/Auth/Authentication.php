@@ -22,14 +22,7 @@ class Authentication extends Controller
     public function register(Request $request)
     {
 
-        // $aa =  $request->validate([
-        //     'name' => 'required|string|max:255',
-        //     'email' => 'required|string|email|max:255|unique:users',
-        //     'password' => 'required|string|min:6|confirmed',
-        // ]);
-        // \dd($aa);
-        // die();
-        // $this->validateExistUser($request);
+
         $user = User::where('email', $request->email)->first();
         if ($user) {
             return response()->json(['error' => 'Email already exists'], 409);
@@ -39,7 +32,6 @@ class Authentication extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-
 
         try {
             $token = JWTAuth::fromUser($user);
@@ -63,9 +55,11 @@ class Authentication extends Controller
             return response()->json(['error' => 'Could not create token'], 500);
         }
 
+        $users = User::select('name', 'account_type')->where('email', $request->email)->first();
         return response()->json([
             'token' => $token,
             'expires_in' => auth('api')->factory()->getTTL() * 60,
+            'role' => $users->account_type
         ]);
     }
 
