@@ -3,6 +3,15 @@ $(document).ready(function () {
         table.ajax.reload();
     });
 
+    $('.filter-residential-area').select2({
+        width: '100%',
+        placeholder: "Cari berdasarkan Perumahan",
+        allowClear: true
+    });
+    $('.filter-residential-area').on("change", function (e) {
+        table.ajax.reload();
+    });
+
     table = $("#payment-type-table").DataTable({
         processing: true,
         serverSide: true,
@@ -21,9 +30,12 @@ $(document).ready(function () {
                 className: "text-center",
             },
             {
+                data: "residentialAreaName",
+                title: "Perumahan",
+            },
+            {
                 data: "name",
                 title: "Title",
-                className: "text-center",
             },
             {
                 data: "is_recurring",
@@ -31,14 +43,16 @@ $(document).ready(function () {
                 className: "text-center",
             },
             {
+                data: "cut_off_date",
+                title: "Tanggal Potong",
+            },
+            {
                 data: "description",
                 title: "Deskripsi",
-                className: "text-center",
             },
             {
                 data: "updated_at",
                 title: "Update Terakhir",
-                className: "text-center",
             },
             {
                 data: "action",
@@ -56,9 +70,9 @@ $(document).ready(function () {
                 'Authorization': 'Bearer ' + token,
             },
             data: function (e) {
-                // e.filter = {
-                //     "is_owner": $(".filter-pemilik").val(),
-                // }
+                e.filter = {
+                    "residential_area_id": $(".filter-residential-area").val(),
+                }
                 e.keyword = $(".search-keyword").val();
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {

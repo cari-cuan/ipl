@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Page\Master;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Master\PaymentTypeModel;
+use App\Models\Master\ResidentialAreaModel;
 
 class PaymentTypeController extends Controller
 {
@@ -13,7 +14,8 @@ class PaymentTypeController extends Controller
      */
     public function index()
     {
-        return view('pages.master.paymentType.index');
+        $residentialAreas = ResidentialAreaModel::all();
+        return view('pages.master.paymentType.index', compact('residentialAreas'));
     }
 
     /**
