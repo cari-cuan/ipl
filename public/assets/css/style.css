@@ -31970,7 +31970,7 @@ body.layout-mode-rtl .nav-list::before {
 
 .menu-horizontal .page-wrapper {
   margin: 0;
-  padding-top: 110px;
+  /* padding-top: 110px; ini dibackup karna menunya di ilangkan */
   max-width: 1320px;
   margin: 0 auto;
 }
@@ -32020,6 +32020,7 @@ body.layout-mode-rtl .nav-list::before {
 
 .menu-horizontal .header .main-header .user-menu {
   padding-right: 0;
+  float: right;
 }
 
 .menu-horizontal .header .header-left {

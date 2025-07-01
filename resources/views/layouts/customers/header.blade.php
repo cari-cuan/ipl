@@ -27,7 +27,7 @@
         <ul class="nav user-menu">
 
             <!-- Search -->
-            <li class="nav-item nav-searchinputs">
+            {{-- <li class="nav-item nav-searchinputs">
                 <div class="top-nav-search">
                     <a href="javascript:void(0);" class="responsive-search">
                         <i class="fa fa-search"></i>
@@ -74,11 +74,11 @@
                         </div>
                     </form>
                 </div>
-            </li>
+            </li> --}}
             <!-- /Search -->
 
             <!-- Select Store -->
-            <li class="nav-item dropdown has-arrow main-drop select-store-dropdown">
+            {{-- <li class="nav-item dropdown has-arrow main-drop select-store-dropdown">
                 <a href="javascript:void(0);" class="dropdown-toggle nav-link select-store" data-bs-toggle="dropdown">
                     <span class="user-info">
                         <span class="user-letter">
@@ -106,10 +106,10 @@
                         Eden
                     </a>
                 </div>
-            </li>
+            </li> --}}
             <!-- /Select Store -->
 
-            <li class="nav-item dropdown link-nav">
+            {{-- <li class="nav-item dropdown link-nav">
                 <a href="javascript:void(0);" class="btn btn-primary btn-md d-inline-flex align-items-center"
                     data-bs-toggle="dropdown">
                     <i class="ti ti-circle-plus me-1"></i>Add New
@@ -214,7 +214,7 @@
                         </div>
                     </div>
                 </div>
-            </li>
+            </li> --}}
 
             <li class="nav-item pos-nav">
                 <a href="pos.html" class="btn btn-dark btn-md d-inline-flex align-items-center">
@@ -223,9 +223,8 @@
             </li>
 
             <!-- Flag -->
-            <li class="nav-item dropdown has-arrow flag-nav nav-item-box">
-                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="javascript:void(0);"
-                    role="button">
+            {{-- <li class="nav-item dropdown has-arrow flag-nav nav-item-box">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="javascript:void(0);" role="button">
                     <img src="assets/img/flags/us-flag.svg" alt="Language" class="img-fluid">
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
@@ -236,10 +235,10 @@
                         <img src="assets/img/flags/arabic.svg" alt="Img" height="16">Arabic
                     </a>
                 </div>
-            </li>
+            </li> --}}
             <!-- /Flag -->
 
-            <li class="nav-item nav-item-box">
+            {{-- <li class="nav-item nav-item-box">
                 <a href="javascript:void(0);" id="btnFullscreen">
                     <i class="ti ti-maximize"></i>
                 </a>
@@ -249,8 +248,8 @@
                     <i class="ti ti-mail"></i>
                     <span class="badge rounded-pill">1</span>
                 </a>
-            </li>
-            <!-- Notifications -->
+            </li> --}}
+            {{-- <!-- Notifications -->
             <li class="nav-item dropdown nav-item-box">
                 <a href="javascript:void(0);" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
                     <i class="ti ti-bell"></i>
@@ -332,12 +331,13 @@
 
             <li class="nav-item nav-item-box">
                 <a href="general-settings.html"><i class="ti ti-settings"></i></a>
-            </li>
+            </li> --}}
             <li class="nav-item dropdown has-arrow main-drop profile-nav">
                 <a href="javascript:void(0);" class="nav-link userset" data-bs-toggle="dropdown">
                     <span class="user-info p-0">
                         <span class="user-letter">
-                            <img src="assets/img/profiles/avator1.jpg" alt="Img" class="img-fluid">
+                            <i class="fa fa-sign-in"></i>
+                            {{-- <img src="assets/img/profiles/avator1.jpg" alt="Img" class="img-fluid"> --}}
                         </span>
                     </span>
                 </a>
@@ -356,8 +356,7 @@
                     <a class="dropdown-item" href="general-settings.html"><i
                             class="ti ti-settings-2 me-2"></i>Settings</a>
                     <hr class="my-2">
-                    <a class="dropdown-item logout pb-0" href="signin.html"><i
-                            class="ti ti-logout me-2"></i>Logout</a>
+                    <a class="dropdown-item logout pb-0" href="signin.html"><i class="ti ti-logout me-2"></i>Logout</a>
                 </div>
             </li>
         </ul>

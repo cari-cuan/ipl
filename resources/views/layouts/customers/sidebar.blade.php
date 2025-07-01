@@ -1,4 +1,4 @@
-<div class="sidebar sidebar-horizontal" id="horizontal-menu">
+{{-- <div class="sidebar sidebar-horizontal" id="horizontal-menu">
     <div id="sidebar-menu-3" class="sidebar-menu">
         <div class="main-menu">
             <ul class="nav-menu">
@@ -649,4 +649,4 @@
             </ul>
         </div>
     </div>
-</div>
+</div> --}}
