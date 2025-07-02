@@ -49,7 +49,7 @@
 
         $.ajax({
             type: "POST",
-            url: "http://127.0.0.1:8000/api/login",
+            url: host + "/api/login",
             data: {
                 email: email,
                 password: password

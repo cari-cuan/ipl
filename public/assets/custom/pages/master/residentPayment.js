@@ -61,7 +61,7 @@ $(document).ready(function () {
         ],
         order: [],
         ajax: {
-            url: "http://127.0.0.1:8000/api/resident-payment",
+            url: host + "/api/resident-payment",
             type: "POST",
             // headers: {
             //     'Authorization': 'Bearer ' + api_token,
