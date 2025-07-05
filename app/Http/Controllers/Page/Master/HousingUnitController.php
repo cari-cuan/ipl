@@ -15,7 +15,8 @@ class HousingUnitController extends Controller
      */
     public function index()
     {
-        return view('pages.master.housingUnit.index');
+        $residentialAreas = ResidentialAreaModel::all();
+        return view('pages.master.housingUnit.index', compact('residentialAreas'));
     }
 
     /**

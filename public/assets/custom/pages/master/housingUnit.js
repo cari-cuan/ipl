@@ -3,6 +3,15 @@ $(document).ready(function () {
         table.ajax.reload();
     });
 
+    $('.filter-residential-area').select2({
+        width: '100%',
+        placeholder: "Cari berdasarkan Perumahan",
+        allowClear: true
+    });
+    $('.filter-residential-area').on("change", function (e) {
+        table.ajax.reload();
+    });
+
     table = $("#housing-unit-table").DataTable({
         processing: true,
         serverSide: true,
@@ -71,9 +80,9 @@ $(document).ready(function () {
                 'Authorization': 'Bearer ' + token,
             },
             data: function (e) {
-                // e.filter = {
-                //     "is_owner": $(".filter-pemilik").val(),
-                // }
+                e.filter = {
+                    "residential_area_id": $(".filter-residential-area").val(),
+                }
                 e.keyword = $(".search-keyword").val();
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {

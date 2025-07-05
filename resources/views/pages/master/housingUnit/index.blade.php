@@ -45,16 +45,17 @@
                         <input type="text" class="form-control  search-keyword" placeholder="Cari data....">
                     </div>
                 </div>
-                {{-- <div class="mb-3 row">
-                    <label class="col-form-label col-md-2">Pemilik </label>
+                <div class="mb-3 row">
+                    <label class="col-form-label col-md-2">Perumahan </label>
                     <div class="col-md-10">
-                        <select class="js-example-basic-single select2 filter-pemilik form-control">
+                        <select class="js-example-basic-single select2 filter-residential-area form-control">
                             <option value="">-- Pilih --</option>
-                            <option value="1">YA</option>
-                            <option value="0">Tidak</option>
+                            @foreach ($residentialAreas as $area)
+                                <option value="{{ $area->id }}">{{ $area->name }}</option>
+                            @endforeach
                         </select>
                     </div>
-                </div> --}}
+                </div>
             </form>
         </div>
         <div class="card-body p-0">

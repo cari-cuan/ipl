@@ -20,14 +20,7 @@ class PaymentTypeController extends Controller
         $start = ($page - 1) * $size;
 
         // Query the model
-        $query = PaymentTypeModel::select(
-            'id',
-            'name',
-            'is_recurring',
-            'description',
-            'created_at',
-            'updated_at',
-        );
+        $query = PaymentTypeModel::with('residentialArea');
 
         // Retrieve order column index and direction
         $orderColumnIndex = $request->input('order.0.column', 0); // default to column 1 if not provided
@@ -36,9 +29,11 @@ class PaymentTypeController extends Controller
         // Map DataTables column index to database column name
         $columns = [
             0 => 'name',
-            1 => 'is_recurring',
-            2 => 'description',
-            3 => 'updated_at',
+            1 => 'residentialArea.name',
+            2 => 'is_recurring',
+            3 => 'cut_off_date',
+            4 => 'description',
+            5 => 'updated_at',
         ];
         // Get the order column name based on the index
         if ($orderDirection !== 'asc' && $orderDirection !== 'desc') {
@@ -51,6 +46,9 @@ class PaymentTypeController extends Controller
             $query->where(function ($q) use ($keyword) {
                 $q->orWhere('name', 'like', "%{$keyword}%");
                 $q->orWhere('description', 'like', "%{$keyword}%");
+                $q->orWhereHas('residentialArea', function($sub) use ($keyword) {
+                    $sub->where('name', 'like', "%$keyword%");
+                });
             });
         }
 
@@ -86,7 +84,13 @@ class PaymentTypeController extends Controller
             $row = new \stdClass(); // Create an empty object for each row
             $row->no = $no; // Index number
             $row->name = $list->name;
-            $row->is_recurring = $list->is_recurring;
+            $row->residentialAreaName = $list->residentialArea ? $list->residentialArea->name : '-';
+            if ($list->is_recurring == 1) {
+                $row->is_recurring = '<i class="fa fa-check text-success"></i>';
+            } else {
+                $row->is_recurring = '<i class="fa fa-times text-danger"></i>';
+            }
+            $row->cut_off_date = $list->cut_off_date ? $list->cut_off_date : '-';
             $row->description = $list->description;
             $row->updated_at = $list->updated_at->translatedFormat('d F Y H:i');
             $row->action = '<div class="btn-group me-2">
